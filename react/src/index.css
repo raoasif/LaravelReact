@@ -241,3 +241,37 @@ table > tbody > tr > td {
         transform: translateY(0);
     }
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: #5b08a7; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #5b08a7; /* Darker shade on hover */
+}
+
+.pagination button.active {
+  background-color: #00a762; /* Active page color */
+  color: white;
+  font-weight: bold; /* Bold text for the active page */
+}
+
+.pagination button:disabled {
+  background-color: #ccc; /* Disabled button color */
+  cursor: not-allowed; /* Change cursor for disabled buttons */
+}
+

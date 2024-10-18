@@ -8,6 +8,7 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -23,7 +24,7 @@ class AuthController extends Controller
         $user = User::create([
             'name'=> $data['name'],
             'email'=> $data['email'],
-            'password'=> $data['password'],
+            'password'=> Hash::make($data['password']),
         ]);
 
         $token = $user->createToken('main')->plainTextToken;
@@ -38,7 +39,7 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials)) {
             return response([
                 'message' => 'Provided email address or password is incorrect'
-            ]);
+            ], 422);
         }
         /* @var User $user */
         $user = Auth::user();
